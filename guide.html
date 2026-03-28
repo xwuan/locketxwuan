@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1"/>
+<title>Guide — Locket Gold Xwuan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#f5f4ff;--card:#ffffff;--border:#e6e0ff;
+  --p1:#7c3aed;--p2:#a855f7;--accent:#06b6d4;
+  --text:#1e1b3a;--muted:#8878b0;--warning:#f59e0b;
+  --red:#ef4444;--green:#10b981;--radius:18px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{overscroll-behavior:none;background:var(--bg);color:var(--text);font-family:'Be Vietnam Pro',sans-serif;
+  font-size:15px;line-height:1.7;font-weight:500;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;}
+.bg-dots{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(168,85,247,.10) 1px,transparent 1px);background-size:26px 26px;}
+.bg-decos{position:fixed;inset:0;z-index:0;pointer-events:none;font-size:1.8rem;opacity:.06;}
+.bg-decos span:nth-child(1){position:absolute;top:8%;left:5%;animation:floatDeco 7s ease-in-out infinite 0s;}
+.bg-decos span:nth-child(2){position:absolute;top:12%;right:6%;animation:floatDeco 7s ease-in-out infinite 2s;}
+.bg-decos span:nth-child(3){position:absolute;bottom:18%;left:8%;animation:floatDeco 7s ease-in-out infinite 4s;}
+.bg-decos span:nth-child(4){position:absolute;bottom:22%;right:9%;animation:floatDeco 7s ease-in-out infinite 1s;}
+@keyframes floatDeco{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+@keyframes popIn{from{opacity:0;transform:scale(.88) translateY(8px);}to{opacity:1;transform:scale(1) translateY(0);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* ─── SCREENS ─────────────────────────────────── */
+.screen{position:fixed;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;
+  padding:20px;background:var(--bg);}
+.screen.hidden{display:none;}
+
+/* ─── ENTRY BOX ───────────────────────────────── */
+.entry-box{
+  background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);
+  padding:36px 28px;width:100%;max-width:420px;
+  box-shadow:0 4px 32px rgba(124,58,237,.1);
+  animation:popIn .55s cubic-bezier(.34,1.56,.64,1) both;
+  position:relative;z-index:1;
+}
+.back-link{display:inline-flex;align-items:center;gap:5px;color:var(--muted);
+  font-size:.8rem;font-weight:600;text-decoration:none;margin-bottom:20px;transition:color .2s;}
+.back-link:hover{color:var(--p1);}
+.entry-brand{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.7rem;
+  background:linear-gradient(135deg,var(--p1),var(--p2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;}
+.entry-sub{font-size:.82rem;color:var(--muted);margin-bottom:24px;line-height:1.55;}
+.field-label{display:block;font-family:'Be Vietnam Pro',sans-serif;font-weight:700;
+  font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:7px;}
+.field-input{
+  width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:12px;
+  padding:13px 16px;color:var(--p1);font-family:'Be Vietnam Pro',sans-serif;
+  font-size:1rem;font-weight:700;outline:none;letter-spacing:.07em;
+  text-transform:uppercase;transition:border-color .2s,box-shadow .2s;margin-bottom:12px;
+}
+.field-input::placeholder{color:var(--muted);text-transform:none;font-size:.85rem;font-weight:500;letter-spacing:0;}
+.field-input:focus{border-color:var(--p2);box-shadow:0 0 0 3px rgba(168,85,247,.1);}
+.err-msg{
+  background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:10px;
+  padding:10px 14px;font-size:.82rem;color:var(--red);line-height:1.55;display:none;margin-bottom:12px;
+}
+.btn-primary{
+  width:100%;padding:15px;border:none;border-radius:14px;
+  background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;
+  font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:900;letter-spacing:.03em;
+  cursor:pointer;transition:all .18s;
+  box-shadow:0 5px 0 #5b20c0,0 2px 12px rgba(124,58,237,.3);
+}
+.btn-primary:hover{opacity:.92;}
+.btn-primary:active{transform:translateY(4px);box-shadow:0 1px 0 #5b20c0;}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
+
+/* ─── LOADING ─────────────────────────────────── */
+.loading-box{text-align:center;}
+.spin{width:44px;height:44px;border:3px solid var(--border);border-top-color:var(--p1);
+  border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px;}
+.loading-text{font-size:.82rem;color:var(--muted);font-weight:600;letter-spacing:.06em;text-transform:uppercase;}
+
+/* ─── COMPLETE ────────────────────────────────── */
+#completeScreen{overflow-y:auto;align-items:flex-start;}
+.complete-wrap{width:100%;max-width:440px;margin:0 auto;padding:16px 0 32px;}
+@keyframes bounce{0%,100%{transform:scale(1);}50%{transform:scale(1.15);}}
+.complete-ico{font-size:56px;margin-bottom:16px;animation:bounce .6s ease;}
+.complete-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.7rem;
+  background:linear-gradient(135deg,var(--green),var(--accent));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px;}
+.complete-sub{font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:24px;}
+.btn-home{
+  display:inline-block;padding:14px 32px;border-radius:14px;
+  background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;
+  font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:900;text-decoration:none;
+  box-shadow:0 5px 0 #5b20c0;transition:all .18s;
+}
+.btn-home:active{transform:translateY(4px);box-shadow:0 1px 0 #5b20c0;}
+
+/* ─── GUIDE UI ────────────────────────────────── */
+#guideUI{display:none;position:relative;z-index:1;min-height:100vh;}
+
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:20;
+  background:rgba(245,244,255,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:12px 20px;gap:12px;
+}
+.topbar-logo{font-family:'Nunito',sans-serif;font-weight:900;font-size:1rem;
+  background:linear-gradient(135deg,var(--p1),var(--p2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.step-progress{font-size:.78rem;color:var(--muted);font-weight:600;}
+.timer-chip{
+  background:rgba(168,85,247,.08);border:1.5px solid var(--border);border-radius:20px;
+  padding:6px 14px;font-size:.78rem;color:var(--p1);font-weight:700;white-space:nowrap;
+}
+.timer-chip.warn{color:var(--warning);border-color:rgba(245,158,11,.3);background:rgba(245,158,11,.06);}
+.timer-chip.crit{color:var(--red);border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.06);animation:timerFlash .8s infinite;}
+@keyframes timerFlash{50%{opacity:.4;}}
+.progress-bar{position:fixed;top:49px;left:0;right:0;z-index:19;height:3px;background:var(--border);}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--p1),var(--p2));transition:width .4s ease;}
+
+.guide-content{padding:88px 16px 130px;max-width:600px;margin:0 auto;}
+
+/* STEP CARD */
+.step-card{
+  background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);
+  padding:28px 24px;margin-bottom:16px;
+  box-shadow:0 2px 16px rgba(124,58,237,.06);
+  animation:fadeUp .4s ease;
+}
+.step-card.callout{
+  border-color:rgba(6,182,212,.25);
+  background:linear-gradient(145deg,rgba(6,182,212,.04),var(--card));
+}
+.step-card.warning{
+  border-color:rgba(245,158,11,.25);
+  background:linear-gradient(145deg,rgba(245,158,11,.04),var(--card));
+}
+.step-num{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+.step-num-badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:26px;height:26px;border-radius:50%;
+  background:linear-gradient(135deg,var(--p1),var(--p2));
+  font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;color:#fff;
+}
+.step-num-label{font-size:.72rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em;}
+.step-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.25rem;
+  color:var(--p1);margin-bottom:14px;line-height:1.25;}
+.step-content{font-size:.9rem;color:var(--text);line-height:1.8;white-space:pre-wrap;}
+.step-img-wrap{margin:16px 0;border-radius:12px;overflow:hidden;border:1.5px solid var(--border);}
+.step-img-wrap img{width:100%;height:auto;display:block;object-fit:cover;}
+.step-caption{font-size:.75rem;color:var(--muted);text-align:center;padding:8px 14px;
+  background:rgba(124,58,237,.04);font-weight:600;letter-spacing:.04em;text-transform:uppercase;}
+.step-imgtext{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;}
+
+/* VIDEO */
+.video-wrap{margin:16px 0 0;}
+.video-shell{position:relative;width:100%;max-width:280px;margin:0 auto;border-radius:16px;overflow:hidden;border:1.5px solid var(--border);box-shadow:0 4px 24px rgba(124,58,237,.10);background:#0f0a1e;}
+.video-shell::before{content:'';display:block;padding-top:177.78%;}
+.video-shell iframe,.video-shell video{position:absolute;inset:0;width:100%;height:100%;border:none;}
+.video-shell video{object-fit:contain;background:#000;}
+.video-caption{font-size:.72rem;color:var(--muted);text-align:center;margin-top:8px;font-weight:600;letter-spacing:.04em;}
+.btn-download{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border:none;border-radius:14px;margin-top:16px;background:linear-gradient(135deg,var(--accent),#0891b2);color:#fff;font-family:'Nunito',sans-serif;font-size:.92rem;font-weight:900;letter-spacing:.02em;cursor:pointer;text-decoration:none;box-shadow:0 4px 0 #0e7490;transition:all .18s;}
+.btn-download:active{transform:translateY(3px);box-shadow:0 1px 0 #0e7490;}
+.btn-link{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border:1.5px solid var(--p2);border-radius:14px;margin-top:12px;background:transparent;color:var(--p1);font-family:'Nunito',sans-serif;font-size:.92rem;font-weight:900;letter-spacing:.02em;cursor:pointer;text-decoration:none;transition:all .18s;}
+.btn-link:hover{background:rgba(124,58,237,.06);}
+.notice-box{background:rgba(245,158,11,.06);border:1.5px solid rgba(245,158,11,.2);border-left:3px solid var(--warning);border-radius:12px;padding:11px 14px;display:flex;align-items:flex-start;gap:8px;margin-top:12px;}
+.notice-box p{font-size:.82rem;color:var(--text);line-height:1.6;}
+.notice-box b{color:var(--warning);font-weight:700;}
+
+/* DOWNLOAD */
+.btn-module{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  width:100%;padding:16px 18px;margin-top:16px;
+  background:linear-gradient(135deg,#f59e0b,#d97706);
+  border:none;border-radius:16px;cursor:pointer;
+  box-shadow:0 4px 0 #b45309,0 2px 16px rgba(245,158,11,.3);
+  transition:all .18s;text-decoration:none;
+}
+.btn-module:active{transform:translateY(3px);box-shadow:0 1px 0 #b45309;}
+.btn-module-left{display:flex;align-items:center;gap:10px;}
+.btn-module-icon{font-size:1.4rem;line-height:1;}
+.btn-module-info{text-align:left;}
+.btn-module-label{font-family:'Nunito',sans-serif;font-size:.72rem;font-weight:900;
+  color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:1px;}
+.btn-module-name{font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;color:#fff;display:block;}
+.btn-module-action{font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:900;
+  color:#fff;background:rgba(255,255,255,.2);border-radius:20px;
+  padding:5px 12px;white-space:nowrap;}
+.btn-module.copied{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 4px 0 #047857;}
+
+/* VIDEO PLACEHOLDER */
+.video-placeholder{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px;
+  background:#0f0a1e;
+}
+.video-placeholder-icon{width:48px;height:48px;border-radius:50%;
+  background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);
+  display:flex;align-items:center;justify-content:center;}
+.video-placeholder-icon::after{content:'';display:block;
+  width:0;height:0;border-style:solid;
+  border-width:9px 0 9px 17px;
+  border-color:transparent transparent transparent rgba(255,255,255,.7);
+  margin-left:3px;}
+.video-placeholder-text{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.4);
+  letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:0 16px;line-height:1.5;}
+
+/* NAV BAR */
+.nav-bar{
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%);z-index:20;
+  background:rgba(245,244,255,.97);backdrop-filter:blur(16px);
+  border-top:1px solid var(--border);
+  padding:8px 16px 12px;
+  display:flex;flex-direction:column;gap:6px;
+  width:100%;max-width:640px;
+  border-radius:20px 20px 0 0;
+  box-shadow:0 -4px 24px rgba(124,58,237,.08);
+}
+@media(max-width:640px){
+  .nav-bar{left:0;transform:none;max-width:100%;border-radius:0;padding:6px 12px 10px;}
+}
+
+/* Nav hint */
+.nav-hint{
+  text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  font-size:.7rem;font-weight:800;color:var(--p1);letter-spacing:.01em;
+  background:linear-gradient(135deg,rgba(124,58,237,.08),rgba(168,85,247,.08));
+  border:1px solid rgba(168,85,247,.2);
+  border-radius:20px;padding:5px 14px;
+  animation:hintPop .5s cubic-bezier(.34,1.56,.64,1) both;
+}
+.nav-hint .hint-arrow{display:inline-block;animation:hintBounce 1.2s ease-in-out infinite;}
+@keyframes hintBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(2px);}}
+@keyframes hintPop{from{opacity:0;transform:scale(.92);}to{opacity:1;transform:scale(1);}}
+
+.nav-btns{display:flex;align-items:center;gap:8px;}
+.btn-nav{
+  flex:1;padding:12px 16px;border-radius:12px;
+  font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:900;letter-spacing:.02em;
+  cursor:pointer;transition:all .18s;border:none;
+}
+.btn-prev{
+  background:transparent;border:1.5px solid var(--border);color:var(--muted);
+  flex:0 0 auto;padding:12px 18px;
+}
+.btn-prev:hover{border-color:var(--p2);color:var(--p1);}
+.btn-next{
+  background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;
+  box-shadow:0 4px 0 #5b20c0;
+}
+.btn-next:not(:disabled){animation:navPulse 2.5s ease-in-out infinite;}
+@keyframes navPulse{0%,100%{box-shadow:0 4px 0 #5b20c0,0 0 0 0 rgba(124,58,237,.3);}60%{box-shadow:0 4px 0 #5b20c0,0 0 0 7px rgba(124,58,237,0);}}
+.btn-next:active{transform:translateY(3px);box-shadow:0 1px 0 #5b20c0;animation:none;}
+.btn-next:disabled{animation:none;opacity:.45;}
+.btn-complete{
+  background:linear-gradient(135deg,#059669,#10b981);color:#fff;
+  box-shadow:0 5px 0 #047857;font-size:1rem;font-weight:900;
+  animation:navPulseGreen 1.6s ease-in-out infinite;
+  border:none;letter-spacing:.03em;
+}
+@keyframes navPulseGreen{
+  0%,100%{box-shadow:0 5px 0 #047857,0 0 0 0 rgba(16,185,129,.5);}
+  55%{box-shadow:0 5px 0 #047857,0 0 0 10px rgba(16,185,129,0);}
+}
+.btn-complete:active{transform:translateY(4px);box-shadow:0 1px 0 #047857;animation:none;}
+/* Nav hint xanh khi bước cuối */
+.nav-hint.hint-complete{
+  background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(5,150,105,.15));
+  border-color:rgba(16,185,129,.4);color:#047857;
+  font-size:.76rem;
+}
+
+/* PC layout */
+@media(min-width:640px){
+  .topbar{padding:14px 32px;}
+  .guide-content{padding:96px 24px 160px;max-width:680px;}
+  .step-card{padding:32px 32px;}
+  .entry-box{padding:40px 36px;}
+  .video-shell{max-width:320px;}
+  .choice-cards{gap:16px;}
+  .choice-card{padding:20px 16px;}
+  .nav-bar{padding:10px 24px 16px;gap:8px;}
+  .btn-nav{padding:14px 20px;font-size:.95rem;}
+  .btn-prev{padding:14px 22px;}
+  .nav-hint{font-size:.78rem;padding:7px 18px;}
+}
+
+/* COMPARE TABS */
+.compare-tabs{
+  display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;
+  scrollbar-width:none;margin-bottom:14px;
+}
+.compare-tabs::-webkit-scrollbar{display:none;}
+.compare-tab{
+  flex:0 0 auto;
+  padding:8px 12px;border-radius:12px;
+  background:transparent;border:1.5px solid var(--border);
+  font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;
+  color:var(--muted);cursor:pointer;transition:all .18s;
+  white-space:nowrap;line-height:1.3;
+}
+.compare-tab.active{background:var(--p1);border-color:var(--p1);color:#fff;}
+.compare-pane{display:none;}
+.compare-pane.active{display:block;}
+.compare-img-wrap{border-radius:10px;overflow:hidden;border:1.5px solid var(--border);background:#0f0a1e;}
+.compare-img-wrap img{width:100%;height:auto;display:block;}
+.compare-badge{
+  display:block;font-size:.68rem;font-weight:800;border-radius:20px;
+  padding:3px 8px;margin-bottom:6px;text-align:center;
+}
+.compare-badge.old{background:rgba(124,58,237,.1);color:var(--p1);}
+.compare-badge.new{background:rgba(16,185,129,.1);color:#059669;}
+.compare-note{
+  font-size:.78rem;color:var(--text);line-height:1.6;
+  margin-top:12px;padding:10px 12px;
+  background:rgba(124,58,237,.04);border:1px solid rgba(124,58,237,.1);border-radius:10px;
+}
+.compare-note b{color:var(--p1);}
+.compare-note .win{color:#059669;font-weight:800;}
+.compare-verdict{
+  display:flex;gap:6px;margin-top:8px;
+}
+.compare-verdict-item{
+  flex:1;border-radius:10px;padding:7px 8px;text-align:center;
+  font-size:.7rem;font-weight:800;line-height:1.4;
+}
+.compare-verdict-item.v-old{background:rgba(124,58,237,.07);color:var(--p1);}
+.compare-verdict-item.v-new{background:rgba(16,185,129,.07);color:#059669;}
+.compare-verdict-item.v-draw{background:rgba(245,158,11,.07);color:#b45309;flex:2;}
+/* CHOICE STEP */
+.btn-compare{
+  width:100%;padding:14px 18px;margin-bottom:18px;
+  background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(168,85,247,.12));
+  border:2px solid var(--p2);border-radius:16px;
+  color:var(--p1);font-family:'Nunito',sans-serif;font-size:.92rem;font-weight:900;
+  cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:10px;
+  box-shadow:0 3px 12px rgba(124,58,237,.15);
+}
+.btn-compare:hover{background:linear-gradient(135deg,rgba(124,58,237,.16),rgba(168,85,247,.18));box-shadow:0 5px 20px rgba(124,58,237,.25);}
+.btn-compare .arrow{transition:transform .25s;margin-left:auto;}
+.btn-compare.open .arrow{transform:rotate(180deg);}
+.compare-panel{
+  overflow:hidden;max-height:0;transition:max-height .4s ease;
+  border:1.5px solid rgba(168,85,247,.2);border-radius:14px;margin-bottom:16px;
+  background:rgba(124,58,237,.03);
+}
+.compare-panel.open{max-height:2000px;}
+.compare-panel-inner{padding:14px;}
+.compare-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+@media(min-width:520px){
+  .compare-cols{gap:16px;}
+}
+.compare-col-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:.82rem;
+  color:var(--p1);margin-bottom:8px;text-align:center;}
+.compare-video-wrap{border-radius:12px;overflow:hidden;background:#0f0a1e;
+  position:relative;padding-top:177.78%;}
+.compare-video-wrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;}
+.compare-video-placeholder{position:absolute;inset:0;background:#0f0a1e;display:flex;
+  align-items:center;justify-content:center;flex-direction:column;gap:6px;}
+.compare-video-placeholder span{font-size:.65rem;color:rgba(255,255,255,.3);
+  font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:0 8px;}
+
+.choice-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+.choice-card{
+  border:2px solid var(--border);border-radius:14px;padding:16px 14px;
+  cursor:pointer;transition:all .2s;background:var(--card);text-align:center;
+  position:relative;
+}
+.choice-card:hover{border-color:var(--p2);background:rgba(168,85,247,.04);}
+.choice-card.selected{
+  border-color:var(--p1);
+  background:linear-gradient(145deg,rgba(124,58,237,.07),rgba(168,85,247,.07));
+  box-shadow:0 0 0 3px rgba(124,58,237,.12);
+}
+.choice-card-ico{font-size:1.6rem;margin-bottom:6px;}
+.choice-card-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:.88rem;color:var(--text);margin-bottom:4px;}
+.choice-card-tag{display:inline-block;font-size:.68rem;font-weight:700;border-radius:20px;padding:3px 10px;margin-bottom:6px;}
+.choice-card-tag.green{background:rgba(16,185,129,.1);color:#059669;}
+.choice-card-tag.blue{background:rgba(6,182,212,.1);color:#0891b2;}
+.choice-card-desc{font-size:.75rem;color:var(--muted);line-height:1.55;}
+.choice-card-check{
+  position:absolute;top:8px;right:10px;
+  width:18px;height:18px;border-radius:50%;
+  background:var(--p1);display:none;
+  align-items:center;justify-content:center;
+  font-size:.6rem;color:#fff;font-weight:900;
+}
+.choice-card.selected .choice-card-check{display:flex;}
+
+.choice-detail{
+  border:1.5px solid var(--border);border-radius:14px;padding:18px 16px;
+  background:linear-gradient(145deg,rgba(124,58,237,.04),var(--card));
+  animation:fadeUp .3s ease;
+}
+.choice-detail-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:.95rem;
+  color:var(--p1);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+
+/* TOAST */
+.toast{
+  position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--p1);color:#fff;border-radius:30px;
+  padding:10px 22px;font-size:.82rem;font-weight:700;
+  opacity:0;transition:.3s;pointer-events:none;z-index:50;white-space:nowrap;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* CONFIRM MODAL */
+.confirm-overlay{
+  display:none;position:fixed;inset:0;z-index:60;
+  background:rgba(30,27,58,.45);backdrop-filter:blur(4px);
+  align-items:center;justify-content:center;padding:24px;
+}
+.confirm-overlay.show{display:flex;}
+.confirm-box{
+  background:var(--card);border-radius:22px;padding:28px 24px;
+  width:100%;max-width:340px;text-align:center;
+  border:1.5px solid var(--border);
+  box-shadow:0 12px 48px rgba(124,58,237,.2);
+  animation:popIn .35s cubic-bezier(.34,1.56,.64,1) both;
+}
+.confirm-icon{font-size:2.8rem;margin-bottom:12px;}
+.confirm-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;color:var(--text);margin-bottom:8px;}
+.confirm-sub{font-size:.82rem;color:var(--muted);line-height:1.65;margin-bottom:20px;}
+.confirm-btns{display:flex;gap:10px;}
+.confirm-cancel{
+  flex:1;padding:13px;border-radius:12px;border:1.5px solid var(--border);
+  background:transparent;color:var(--muted);font-family:'Nunito',sans-serif;
+  font-size:.88rem;font-weight:900;cursor:pointer;transition:all .18s;
+}
+.confirm-cancel:hover{border-color:var(--p2);color:var(--p1);}
+.confirm-ok{
+  flex:2;padding:13px;border-radius:12px;border:none;
+  background:linear-gradient(135deg,#059669,#10b981);color:#fff;
+  font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;
+  cursor:pointer;transition:all .18s;
+  box-shadow:0 4px 0 #047857;
+}
+.confirm-ok:active{transform:translateY(3px);box-shadow:0 1px 0 #047857;}
+
+@media(max-width:640px){
+  .entry-box{padding:28px 20px;}
+  .step-card{padding:20px 16px;}
+  .step-imgtext{grid-template-columns:1fr;}
+  .guide-content{padding:80px 12px 125px;}
+}
+</style>
+</head>
+<body>
+<div class="bg-dots"></div>
+<div class="bg-decos"><span>✨</span><span>💫</span><span>⭐</span><span>🌟</span></div>
+
+<!-- ENTRY SCREEN -->
+<div class="screen" id="entryScreen">
+  <div class="entry-box">
+    <a href="/" class="back-link">← Quay về trang chủ</a>
+    <div class="entry-brand">📖 Guide Locket Gold</div>
+    <div class="entry-sub">Nhập mã do Xwuan cấp sau khi thanh toán.<br>Mã có hiệu lực 2 tiếng kể từ khi xác thực.</div>
+    <label class="field-label">Mã truy cập</label>
+    <input type="text" class="field-input" id="codeInput" placeholder="VD: XW-A3K7P2" maxlength="20"
+      oninput="this.value=this.value.toUpperCase()"
+      onkeydown="if(event.key==='Enter')enterGuide()"/>
+    <div class="err-msg" id="errMsg"></div>
+    <button class="btn-primary" id="enterBtn" onclick="enterGuide()">→ Xác thực &amp; Vào Guide</button>
+  </div>
+</div>
+
+<!-- LOADING SCREEN -->
+<div class="screen hidden" id="loadScreen">
+  <div class="loading-box"><div class="spin"></div><div class="loading-text">Đang xác thực mã...</div></div>
+</div>
+
+<!-- COMPLETE SCREEN -->
+<div class="screen hidden" id="completeScreen">
+  <div class="complete-wrap">
+
+    <!-- Hero: Bảo hành vĩnh viễn — nổi bật nhất -->
+    <div style="margin:0 0 18px;background:linear-gradient(150deg,#065f46 0%,#059669 55%,#10b981 100%);border-radius:0 0 28px 28px;padding:28px 20px 24px;text-align:center;box-shadow:0 6px 32px rgba(5,150,105,.35);">
+      <div style="font-size:48px;display:inline-block;margin-bottom:10px;animation:bounce .6s ease">🛡️</div>
+      <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.55rem;color:#fff;margin-bottom:6px;letter-spacing:.01em">Bảo hành vĩnh viễn</div>
+      <div style="font-size:.82rem;color:rgba(255,255,255,.85);line-height:1.65;margin-bottom:14px">Đổi máy mới — Xwuan cài lại <b style="color:#fff">hoàn toàn miễn phí</b>.<br>Không thêm phí, không điều kiện. 💚</div>
+      <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);border-radius:20px;padding:7px 18px;">
+        <span style="font-size:1rem">🎉</span>
+        <span style="font-family:'Nunito',sans-serif;font-weight:900;font-size:.85rem;color:#fff">Cài đặt hoàn tất!</span>
+      </div>
+    </div>
+
+    <!-- Subtitle -->
+    <div style="text-align:center;font-size:.8rem;color:var(--muted);font-weight:600;margin-bottom:14px;padding:0 16px">Hoàn thành 3 bước nhỏ bên dưới để kích hoạt bảo hành nhé 👇</div>
+
+    <!-- Progress -->
+    <div style="padding:0 16px 14px">
+      <div style="display:flex;justify-content:space-between;font-size:.72rem;font-weight:700;color:var(--muted);margin-bottom:6px">
+        <span>Tiến trình</span><span id="cProgressTxt">0 / 3 bước</span>
+      </div>
+      <div style="height:5px;background:var(--border);border-radius:99px;overflow:hidden">
+        <div id="cProgressFill" style="height:100%;width:0%;background:linear-gradient(90deg,var(--green),#059669);border-radius:99px;transition:width .5s ease"></div>
+      </div>
+    </div>
+
+    <!-- Step cards -->
+    <div style="padding:0 16px">
+
+      <!-- Step 1: Chụp màn hình -->
+      <div id="cCard1" style="background:var(--card);border:2px solid var(--p1);border-radius:var(--radius);padding:16px;margin-bottom:10px;transition:all .25s">
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div id="cBadge1" style="width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;margin-top:1px">1</div>
+          <div style="flex:1">
+            <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:.9rem;color:var(--text);margin-bottom:3px">📸 Chụp màn hình &amp; gửi Xwuan</div>
+            <div style="font-size:.78rem;color:var(--muted);line-height:1.55">Chụp màn hình này → gửi Xwuan qua Zalo để lưu bảo hành. <b style="color:var(--p1)">Quan trọng!</b></div>
+          </div>
+        </div>
+        <button id="cBtn1" onclick="cTick(1)" style="width:100%;margin-top:12px;padding:11px;border-radius:10px;font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:900;cursor:pointer;transition:all .18s;background:var(--bg);color:var(--green);border:1.5px solid rgba(16,185,129,.35)">✓ Đã chụp &amp; gửi Xwuan rồi</button>
+      </div>
+
+      <!-- Step 2: Kết bạn Locket (đổi lên trên) -->
+      <div id="cCard2" style="background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:10px;transition:all .25s">
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div id="cBadge2" style="width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;margin-top:1px">2</div>
+          <div style="flex:1">
+            <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:.9rem;color:var(--text);margin-bottom:3px">🤝 Kết bạn Locket @xwuan1</div>
+            <div style="font-size:.78rem;color:var(--muted);line-height:1.55">Add shop để nhận thông báo và dễ liên hệ hỗ trợ hơn.</div>
+          </div>
+        </div>
+        <button id="cBtn2" onclick="cGoLocket()" style="width:100%;margin-top:12px;padding:11px;border-radius:10px;font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:900;cursor:pointer;transition:all .18s;background:var(--bg);color:#b45309;border:1.5px solid rgba(245,158,11,.35)">Kết bạn @xwuan1 →</button>
+      </div>
+
+      <!-- Step 3: Nhóm Zalo (xuống dưới) -->
+      <div id="cCard3" style="background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:14px;transition:all .25s">
+        <div style="display:flex;gap:10px;align-items:flex-start">
+          <div id="cBadge3" style="width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-size:.75rem;font-weight:900;background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;margin-top:1px">3</div>
+          <div style="flex:1">
+            <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:.9rem;color:var(--text);margin-bottom:3px">📣 Tham gia nhóm Locket_Xwuan</div>
+            <div style="font-size:.78rem;color:var(--muted);line-height:1.55">Nhận cập nhật sớm nhất — ưu đãi, icon sự kiện, bản vá lỗi.</div>
+          </div>
+        </div>
+        <button id="cBtn3" onclick="cGoZalo()" style="width:100%;margin-top:12px;padding:11px;border-radius:10px;font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:900;cursor:pointer;transition:all .18s;background:var(--bg);color:#0052cc;border:1.5px solid rgba(0,104,255,.3)">Vào nhóm Zalo →</button>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;padding:0 16px 28px">
+      <a href="/" style="display:inline-block;padding:12px 28px;border-radius:14px;background:transparent;border:1.5px solid var(--border);color:var(--muted);font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:900;text-decoration:none;transition:all .2s">← Về trang chủ</a>
+    </div>
+  </div>
+
+  <!-- Popup hoàn tất 3 bước -->
+  <div id="cDoneOverlay" style="display:none;position:fixed;inset:0;background:rgba(124,58,237,.18);z-index:50;align-items:center;justify-content:center;padding:20px">
+    <div style="background:var(--card);border-radius:20px;padding:28px 22px;text-align:center;max-width:320px;width:100%;border:2px solid var(--p1);box-shadow:0 8px 32px rgba(124,58,237,.2);animation:popIn .4s cubic-bezier(.34,1.56,.64,1)">
+      <div style="font-size:44px;margin-bottom:12px">🎊</div>
+      <div style="font-family:'Nunito',sans-serif;font-weight:900;font-size:1.15rem;color:var(--p1);margin-bottom:8px">Hoàn tất rồi!</div>
+      <div style="font-size:.82rem;color:var(--muted);line-height:1.65;margin-bottom:18px">Cảm ơn bạn đã hoàn thành đủ 3 bước. Xwuan sẽ liên hệ xác nhận sớm nhé 💜</div>
+      <button onclick="document.getElementById('cDoneOverlay').style.display='none'" style="width:100%;padding:13px;background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;border:none;border-radius:12px;font-family:'Nunito',sans-serif;font-weight:900;font-size:.88rem;cursor:pointer;box-shadow:0 4px 0 #5b20c0;transition:all .18s">OK, cảm ơn Xwuan! 💜</button>
+    </div>
+  </div>
+</div>
+
+<!-- GUIDE UI -->
+<div id="guideUI">
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div class="topbar-logo">Locket Gold</div>
+      <div class="step-progress" id="stepProgress">Bước 1 / 1</div>
+    </div>
+    <div class="timer-chip" id="timerChip">⏱ --:--</div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  <div class="guide-content" id="stepContainer"></div>
+  <div class="nav-bar" id="navBar">
+    <div class="nav-hint" id="navHint"><span class="hint-arrow">👇</span>&nbsp;Kéo xuống → <b>bấm Tiếp</b> sang bước kế</div>
+    <div class="nav-btns">
+      <button class="btn-nav btn-prev" id="btnPrev" onclick="goPrev()">← Trước</button>
+      <button class="btn-nav btn-next" id="btnNext" onclick="goNext()">Tiếp →</button>
+    </div>
+  </div>
+</div>
+
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-box">
+    <div class="confirm-icon">✅</div>
+    <div class="confirm-title">Xác nhận hoàn thành?</div>
+    <div class="confirm-sub">Locket Gold đã hoạt động chưa? Sau khi xác nhận, mã truy cập sẽ <b>hết hiệu lực ngay</b>.</div>
+    <div class="confirm-btns">
+      <button class="confirm-cancel" onclick="closeConfirm()">Chưa xong</button>
+      <button class="confirm-ok" onclick="doComplete()">✓ Xác nhận</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let guideToken = sessionStorage.getItem('xwGuideToken') || null;
+let steps = [], currentStep = 0;
+let expiresAt = null, pingInterval, timerInterval;
+let step3Choice = null; // 'v280' | 'dns'
+
+let compareTabIdx = 0;
+const COMPARE_TOTAL = 8;
+const COMPARE_LABELS = ['⚡ Độ ổn định','📱 Giao diện chính','🖼 Giao diện phụ','💛 Icon màn hình','🎨 Biểu tượng app','✏️ Chú thích','⚙️ Cài đặt','🔲 Widget'];
+
+function switchTab(idx) {
+  compareTabIdx = idx;
+  const tabs = document.querySelectorAll('.compare-tab');
+  const panes = document.querySelectorAll('.compare-pane');
+  tabs.forEach((t,i) => t.classList.toggle('active', i===idx));
+  panes.forEach((p,i) => p.classList.toggle('active', i===idx));
+  // scroll active tab into view
+  if (tabs[idx]) tabs[idx].scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+  // update counter
+  const counter = document.getElementById('tabCounter');
+  if (counter) counter.textContent = `${idx+1} / ${COMPARE_TOTAL}`;
+  // update arrow colors
+  const prev = document.getElementById('btnTabPrev');
+  const next = document.getElementById('btnTabNext');
+  if (prev) { prev.style.opacity = idx === 0 ? '0.3' : '1'; prev.style.pointerEvents = idx === 0 ? 'none' : ''; }
+  if (next) { next.style.opacity = idx === COMPARE_TOTAL-1 ? '0.3' : '1'; next.style.pointerEvents = idx === COMPARE_TOTAL-1 ? 'none' : ''; }
+}
+function prevTab() { if (compareTabIdx > 0) switchTab(compareTabIdx - 1); }
+function nextTab() { if (compareTabIdx < COMPARE_TOTAL-1) switchTab(compareTabIdx + 1); }
+function toggleCompare() {
+  const btn = document.getElementById('compareBtn');
+  const panel = document.getElementById('comparePanel');
+  if (!btn || !panel) return;
+  const isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+  btn.querySelector('.arrow').textContent = isOpen ? '▾' : '▴';
+}
+function selectChoice(id) {
+  step3Choice = id;
+  document.querySelectorAll('.choice-card').forEach(c => {
+    c.classList.toggle('selected', c.dataset.choice === id);
+  });
+  const detailDns = document.getElementById('detailDns');
+  const detailV280 = document.getElementById('detailV280');
+  if (detailDns) detailDns.style.display = id === 'dns' ? '' : 'none';
+  if (detailV280) detailV280.style.display = id === 'v280' ? '' : 'none';
+  // Scroll đến label video hướng dẫn
+  setTimeout(() => {
+    const detail = document.getElementById(id === 'dns' ? 'detailDns' : 'detailV280');
+    if (detail) {
+      const videoLabel = detail.querySelector('.video-label');
+      const target = videoLabel || detail;
+      const y = target.getBoundingClientRect().top + window.scrollY - 100;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  }, 60);
+  // Enable next button + update navHint
+  const btnNext = document.getElementById('btnNext');
+  const navHint = document.getElementById('navHint');
+  if (btnNext) {
+    const isLast = currentStep === steps.length - 1;
+    btnNext.disabled = false;
+    btnNext.className = 'btn-nav ' + (isLast ? 'btn-complete' : 'btn-next');
+    btnNext.onclick = isLast ? completeGuide : goNext;
+    btnNext.textContent = isLast ? '✓ Hoàn thành' : 'Tiếp →';
+    btnNext.style.opacity = '';
+    if (navHint) {
+      if (isLast) {
+        navHint.innerHTML = '🛡️&nbsp;<b>Bấm Hoàn thành để kích hoạt bảo hành!</b>';
+        navHint.classList.add('hint-complete');
+      } else {
+        navHint.innerHTML = '<span class="hint-arrow">👇</span>&nbsp;Kéo xuống → <b>bấm Tiếp</b> sang bước kế';
+        navHint.classList.remove('hint-complete');
+      }
+    }
+  }
+}
+
+const DEFAULT_STEPS = [
+  {
+    id:'d1',order_num:1,type:'static',
+    title:'Cài Shadowrocket',
+    warning:`🔐 ĐĂNG NHẬP ĐÚNG CHỖ!\n\n✅ App Store → An toàn\n❌ iCloud / Cài đặt → Bị khóa máy ngay!`,
+    video_url:'https://res.cloudinary.com/dqkilohx1/video/upload/v1774017484/shadowrocket_hzy8zl.mp4', download_url:null,
+    install_link:'/install', bg_color:'default',
+  },
+  {
+    id:'d2',order_num:2,type:'static',
+    title:'Cài Locket Gold',
+    module_url:'https://raw.githubusercontent.com/Xwuan19/Premium/refs/heads/main/modules/Locket_Xwuan.module',
+    video_url:'https://res.cloudinary.com/dqkilohx1/video/upload/v1774017480/module_o1jr8l.mp4', download_url:null,
+    install_link:null, bg_color:'default',
+  },
+  {
+    id:'d3',order_num:3,type:'choice',
+    title:'Chọn phiên bản Locket',
+    dns_video_url:'https://res.cloudinary.com/dqkilohx1/video/upload/v1774017477/dns_udq1f3.mp4',
+    download_url:'/dns.mobileconfig',
+    install_link:'/install',
+  },
+];
+
+async function api(path, opts = {}) {
+  const headers = { 'Content-Type': 'application/json' };
+  if (guideToken) headers['Authorization'] = `Bearer ${guideToken}`;
+  const r = await fetch(path, { ...opts, headers });
+  const data = await r.json();
+  if (!r.ok) throw new Error(data.error || r.status);
+  return data;
+}
+
+window.addEventListener('load', async () => {
+  const params = new URLSearchParams(location.search);
+  const code = params.get('code');
+  if (code) document.getElementById('codeInput').value = code.toUpperCase();
+
+  // Nếu có token saved → thử resume session
+  const savedToken = sessionStorage.getItem('xwGuideToken');
+  const savedExpires = sessionStorage.getItem('xwGuideExpires');
+  if (savedToken && savedExpires && new Date(savedExpires) > new Date()) {
+    guideToken = savedToken;
+    expiresAt = new Date(savedExpires);
+    show('loadScreen');
+    try {
+      const stepsData = await api('/api/guide/steps');
+      steps = stepsData?.length ? stepsData : DEFAULT_STEPS;
+      if (steps.length) {
+        currentStep = 0;
+        renderStep();
+        startPing();
+        startTimer();
+        show('guideUI');
+        return;
+      }
+    } catch (err) {
+      // Token hết hạn hoặc bị kick → clear và về entry
+      sessionStorage.removeItem('xwGuideToken');
+      sessionStorage.removeItem('xwGuideExpires');
+      guideToken = null;
+    }
+  }
+  show('entryScreen');
+});
+
+function show(id) {
+  document.querySelectorAll('.screen,#guideUI').forEach(e => { e.classList.add('hidden'); e.style.display = ''; });
+  const el = document.getElementById(id);
+  if (el) { el.classList.remove('hidden'); if (id === 'guideUI') el.style.display = 'block'; }
+}
+function showErr(msg) {
+  const e = document.getElementById('errMsg'); e.textContent = msg; e.style.display = 'block';
+  document.getElementById('enterBtn').disabled = false;
+  document.getElementById('codeInput').focus();
+}
+
+async function enterGuide() {
+  const code = document.getElementById('codeInput').value.trim().toUpperCase();
+  if (!code) { showErr('⚠ Vui lòng nhập mã truy cập'); return; }
+  document.getElementById('enterBtn').disabled = true;
+  document.getElementById('errMsg').style.display = 'none';
+  show('loadScreen');
+  try {
+    const { token, expires_at } = await api('/api/guide/validate', { method: 'POST', body: JSON.stringify({ code }) });
+    guideToken = token;
+    expiresAt = new Date(expires_at);
+    sessionStorage.setItem('xwGuideToken', token);
+    sessionStorage.setItem('xwGuideExpires', expires_at);
+    const stepsData = await api('/api/guide/steps');
+    steps = stepsData?.length ? stepsData : DEFAULT_STEPS;
+    currentStep = 0;
+    renderStep();
+    startPing();
+    startTimer();
+    show('guideUI');
+  } catch (err) {
+    show('entryScreen');
+    showErr('⚠ ' + (err.message || 'Lỗi kết nối. Thử lại.'));
+    document.getElementById('enterBtn').disabled = false;
+  }
+}
+
+function renderStep() {
+  const s = steps[currentStep];
+  if (!s) return;
+  document.getElementById('stepProgress').textContent = `Bước ${currentStep + 1} / ${steps.length}`;
+  document.getElementById('progressFill').style.width = `${((currentStep + 1) / steps.length) * 100}%`;
+  const bgClass = s.bg_color === 'callout' ? ' callout' : s.bg_color === 'warning' ? ' warning' : '';
+  let inner = `<div class="step-num"><span class="step-num-badge">${currentStep + 1}</span><span class="step-num-label">Bước</span></div>
+    ${s.title ? `<div class="step-title">${esc(s.title)}</div>` : ''}`;
+  if (s.type === 'text' || s.type === 'callout') {
+    inner += `<div class="step-content">${esc(s.content || '')}</div>`;
+  } else if (s.type === 'static') {
+    if (s.warning) {
+      const warnHtml = esc(s.warning).replace(/\n/g,'<br>');
+      inner += `<div class="notice-box" style="margin-bottom:16px"><span style="font-size:1rem;flex-shrink:0">⚠️</span><p>${warnHtml}</p></div>`;
+    }
+    if (s.hint) {
+      const hintHtml = s.hint.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/&lt;b&gt;/g,'<b>').replace(/&lt;\/b&gt;/g,'</b>');
+      inner += `<div class="notice-box" style="margin-bottom:12px;border-left-color:var(--accent);background:rgba(6,182,212,.05);border-color:rgba(6,182,212,.2);"><span style="font-size:1rem;flex-shrink:0">💡</span><p style="color:var(--text)">${hintHtml}</p></div>`;
+    }
+    if (s.install_link) inner += `<a class="btn-link" href="${esc(s.install_link)}">📲 Xem tài khoản &amp; cài app</a>`;
+    if (s.module_url) inner += `<button class="btn-module" id="btnModule" onclick="copyModule('${esc(s.module_url)}')">
+      <div class="btn-module-left">
+        <div class="btn-module-icon">🤍</div>
+        <div class="btn-module-info">
+          <span class="btn-module-label">Module Shadowrocket</span>
+          <span class="btn-module-name">Locket Gold ✦</span>
+        </div>
+      </div>
+      <span class="btn-module-action" id="moduleActionText">Sao chép link</span>
+    </button>`;
+    if (s.download_url) inner += `<a class="btn-download" href="${esc(s.download_url)}" download>⬇ Tải file DNS về máy</a>`;
+    if (s.video_url) {
+      inner += `<div style="display:flex;align-items:center;gap:7px;margin-top:18px;margin-bottom:6px;font-size:.72rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;"><span style="background:rgba(124,58,237,.1);color:var(--p1);border-radius:6px;padding:3px 8px;font-size:.7rem">▶ Video hướng dẫn</span></div>
+      <div class="video-wrap" style="margin-top:0"><div class="video-shell"><video src="${esc(s.video_url)}" controls playsinline></video></div></div>`;
+    } else {
+      inner += `<div class="video-wrap"><div class="video-shell"><div class="video-placeholder"><div class="video-placeholder-icon"></div><div class="video-placeholder-text">Video hướng dẫn · sắp ra mắt</div></div></div></div>`;
+    }
+  } else if (s.type === 'image') {
+    if (s.image_url) inner += `<div class="step-img-wrap"><img src="${esc(s.image_url)}" alt="${esc(s.caption||'')}" loading="lazy">${s.caption ? `<div class="step-caption">${esc(s.caption)}</div>` : ''}</div>`;
+    if (s.content) inner += `<div class="step-content">${esc(s.content)}</div>`;
+  } else if (s.type === 'image-text') {
+    inner += `<div class="step-imgtext">
+      <div>${s.image_url ? `<div class="step-img-wrap" style="margin:0"><img src="${esc(s.image_url)}" alt="" loading="lazy">${s.caption ? `<div class="step-caption">${esc(s.caption)}</div>` : ''}</div>` : ''}</div>
+      <div><div class="step-content">${esc(s.content || '')}</div></div>
+    </div>`;
+  } else if (s.type === 'choice') {
+    const ch = step3Choice;
+    inner += `
+    <!-- So sánh — nổi bật -->
+    <button class="btn-compare" id="compareBtn" onclick="toggleCompare()">
+      <span style="font-size:1.1rem">🔍</span>
+      <span style="flex:1;text-align:left">So sánh 2 phiên bản</span>
+      <span style="font-size:.72rem;background:rgba(255,255,255,.25);border-radius:20px;padding:3px 10px;font-weight:800">Xem trước →</span>
+      <span class="arrow" style="font-size:.8rem">▾</span>
+    </button>
+    <div class="compare-panel" id="comparePanel">
+      <div class="compare-panel-inner">
+        <!-- Tabs + nav -->
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <button onclick="prevTab()" id="btnTabPrev"
+            style="flex-shrink:0;width:36px;height:36px;border-radius:50%;
+            background:linear-gradient(135deg,var(--p1),var(--p2));
+            border:none;color:#fff;font-size:1rem;cursor:pointer;transition:all .18s;
+            display:flex;align-items:center;justify-content:center;
+            box-shadow:0 3px 0 #5b20c0;">◀</button>
+          <div class="compare-tabs" id="compareTabs">
+            <button class="compare-tab active" onclick="switchTab(0)">⚡ Độ ổn định</button>
+            <button class="compare-tab" onclick="switchTab(1)">📱 Giao diện chính</button>
+            <button class="compare-tab" onclick="switchTab(2)">🖼 Giao diện phụ</button>
+            <button class="compare-tab" onclick="switchTab(3)">💛 Icon màn hình</button>
+            <button class="compare-tab" onclick="switchTab(4)">🎨 Biểu tượng app</button>
+            <button class="compare-tab" onclick="switchTab(5)">✏️ Chú thích</button>
+            <button class="compare-tab" onclick="switchTab(6)">⚙️ Cài đặt</button>
+            <button class="compare-tab" onclick="switchTab(7)">🔲 Widget</button>
+          </div>
+          <button onclick="nextTab()" id="btnTabNext"
+            style="flex-shrink:0;width:36px;height:36px;border-radius:50%;
+            background:linear-gradient(135deg,var(--p1),var(--p2));
+            border:none;color:#fff;font-size:1rem;cursor:pointer;transition:all .18s;
+            display:flex;align-items:center;justify-content:center;
+            box-shadow:0 3px 0 #5b20c0;">▶</button>
+        </div>
+        <!-- Tab counter + swipe hint -->
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px;">
+          <div id="tabCounter" style="font-size:.7rem;color:var(--p1);font-weight:800;
+            background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.15);
+            border-radius:20px;padding:3px 12px;letter-spacing:.04em;">1 / 8</div>
+          <div style="font-size:.68rem;color:var(--muted);font-weight:600;">← vuốt hoặc bấm mũi tên →</div>
+        </div>
+
+        <!-- Pane 0: Video độ ổn định -->
+        <div class="compare-pane active" id="cpane0">
+          <div class="compare-cols">
+            <div>
+              <div class="compare-badge old" style="display:block">📦 2.8.0</div>
+              <div class="compare-video-wrap">
+                <video src="https://res.cloudinary.com/dqkilohx1/video/upload/v1774079305/open1_wgiveq.mp4" autoplay loop muted playsinline></video>
+              </div>
+            </div>
+            <div>
+              <div class="compare-badge new" style="display:block">🌐 Mới nhất</div>
+              <div class="compare-video-wrap">
+                <video src="https://res.cloudinary.com/dqkilohx1/video/upload/v1774079299/open2_ywha3q.mp4" autoplay loop muted playsinline></video>
+              </div>
+            </div>
+          </div>
+          <div class="compare-note">
+            <div class="compare-verdict">
+              <div class="compare-verdict-item v-old">📦 2.8.0<br>Ổn định hơn ✓</div>
+              <div class="compare-verdict-item v-new">🌐 Mới nhất<br>Hay nháy hơn</div>
+            </div>
+            Bản <b>2.8.0 không có hiện tượng "nháy"</b> khi mở app — chạy mượt hơn. Bản mới nhất đôi khi nháy màn hình 1 lần lúc khởi động.
+          </div>
+        </div>
+
+        <!-- Pane 1: UI chính -->
+        <div class="compare-pane" id="cpane1">
+          <div class="compare-cols">
+            <div>
+              <div class="compare-badge old" style="display:block">📦 2.8.0</div>
+              <div class="compare-img-wrap"><img src="/images/ui1.jpeg" loading="lazy" alt="UI 2.8.0"></div>
+            </div>
+            <div>
+              <div class="compare-badge new" style="display:block">🌐 Mới nhất</div>
+              <div class="compare-img-wrap"><img src="/images/ui2.jpeg" loading="lazy" alt="UI mới nhất"></div>
+            </div>
+          </div>
+          <div class="compare-note">
+            <div class="compare-verdict">
+              <div class="compare-verdict-item v-old">📦 2.8.0<br>Gọn nhẹ</div>
+              <div class="compare-verdict-item v-new">🌐 Mới nhất<br>Hiện đại hơn ✓</div>
+            </div>
+            Bản mới nhất có <b>giao diện camera hiện đại hơn</b> — thanh điều hướng phía dưới, bố cục thoáng hơn. Bản 2.8.0 gọn nhưng cũ hơn.
+          </div>
+        </div>
+
+        <!-- Pane 2: Giao diện phụ / wall -->
+        <div class="compare-pane" id="cpane2">
+          <div class="compare-cols">
+            <div>
+              <div class="compare-badge old" style="display:block">📦 2.8.0</div>
+              <div class="compare-img-wrap"><img src="/images/wall1.jpeg" loading="lazy" alt="Wall 2.8.0"></div>
+            </div>
+            <div>
+              <div class="compare-badge new" style="display:block">🌐 Mới nhất</div>
+              <div class="compare-img-wrap"><img src="/images/wall2.jpeg" loading="lazy" alt="Wall mới nhất"></div>
+            </div>
+          </div>
+          <div class="compare-note">
+            <div class="compare-verdict">
+              <div class="compare-verdict-item v-old">📦 2.8.0<br>Đơn giản</div>
+              <div class="compare-verdict-item v-new">🌐 Mới nhất<br>Đẹp hơn ✓</div>
+            </div>
+            Bản mới nhất có <b>giao diện xem ảnh/lịch sử đẹp và hiện đại hơn</b> — hiển thị Locket Gold badge, bố cục thoáng hơn nhiều.
+          </div>
+        </div>
+
+        <!-- Pane 3: Icon ngoài màn hình -->
+        <div class="compare-pane" id="cpane3">
+          <div class="compare-cols">
+            <div>
+              <div class="compare-badge old" style="display:block">📦 2.8.0</div>
+              <div class="compare-img-wrap"><img src="/images/icon1.jpeg" loading="lazy" alt="Icon 2.8.0"></div>
+            </div>
+            <div>
+              <div class="compare-badge new" style="display:block">🌐 Mới nhất</div>
+              <div class="compare-img-wrap"><img src="/images/icon2.jpeg" loading="lazy" alt="Icon mới nhất"></div>
+            </div>
+          </div>
+          <div class="compare-note">
+            <div class="compare-verdict">
+              <div class="compare-verdict-item v-old">📦 2.8.0<br>Không hỗ trợ</div>
+              <div class="compare-verdict-item v-new">🌐 Mới nhất<br>Liquid Glass ✓</div>
+            </div>
+            Bản mới nhất <b>hỗ trợ hiệu ứng Liquid Glass</b> trên iOS 26 — icon ngoài màn hình chính có hiệu ứng kính mờ cực đẹp. Bản 2.8.0 không có tính năng này.
+          </div>
+        </div>
+
+        <!-- Pane 4: Biểu tượng app (allicon) -->
+        <div class="compare-pane" id="cpane4">
+          <div class="compare-cols">
+            <div>
+              <div class="compare-badge old" style="display:block">📦 2.8.0</div>
+              <div class="compare-img-wrap"><img src="/images/allicon1.jpeg" loading="lazy" alt="Icons 2.8.0"></div>
+            </div>
+            <div>
+              <div class="compare-badge new" style="display:block">🌐 Mới nhất</div>
+              <div class="compare-img-wrap"><img src="/images/allicon2.jpeg" loading="lazy" alt="Icons mới nhất"></div>
+            </div>
+          </div>
+          <div class="compare-note">
+            <div class="compare-verdict">
+              <div class="compare-verdict-item v-old">📦 2.8.0<br>Bộ cố định</div>
+              <div class="compare-verdict-item v-new">🌐 Mới nhất<br>Có icon sự kiện ✓</div>
+            </div>
+            Bản mới nhất <b>thường xuyên được cập nhật thêm biểu tượng có hạn theo sự kiện</b> (Tết, Valentine...). Bản 2.8.0 chỉ có bộ icon cố định, không được cập nhật thêm.
+          </div>
+        </div>
+
+        <!-- Pane 5: Caption / chú thích -->
+        <div class="compare-pane" id="cpane5">
+          <div class="compare-cols">
+            <div>
+              <div class="compare-badge old" style="display:block">📦 2.8.0</div>
+              <div class="compare-img-wrap"><img src="/images/caption1.jpeg" loading="lazy" alt="Caption 2.8.0"></div>
+            </div>
+            <div>
+              <div class="compare-badge new" style="display:block">🌐 Mới nhất</div>
+              <div class="compare-img-wrap"><img src="/images/caption2.jpeg" loading="lazy" alt="Caption mới nhất"></div>
+            </div>
+          </div>
+          <div class="compare-note">
+            <div class="compare-verdict">
+              <div class="compare-verdict-item v-old">📦 2.8.0<br>Bộ cố định</div>
+              <div class="compare-verdict-item v-new">🌐 Mới nhất<br>Có chú thích sự kiện ✓</div>
+            </div>
+            Bản mới nhất <b>được cập nhật thêm chú thích có hạn theo sự kiện</b> — nội dung mới theo mùa, lễ hội. Bản 2.8.0 chỉ có bộ chú thích cố định.
+          </div>
+        </div>
+
+        <!-- Pane 6: Setting -->
+        <div class="compare-pane" id="cpane6">
+          <div class="compare-cols">
+            <div>
+              <div class="compare-badge old" style="display:block">📦 2.8.0</div>
+              <div class="compare-img-wrap"><img src="/images/setting1.jpeg" loading="lazy" alt="Setting 2.8.0"></div>
+            </div>
+            <div>
+              <div class="compare-badge new" style="display:block">🌐 Mới nhất</div>
+              <div class="compare-img-wrap"><img src="/images/setting2.jpeg" loading="lazy" alt="Setting mới nhất"></div>
+            </div>
+          </div>
+          <div class="compare-note">
+            <div class="compare-verdict">
+              <div class="compare-verdict-item v-draw">📦 2.8.0 vs 🌐 Mới nhất — Bố cục khác nhau, tính năng tương đương</div>
+            </div>
+            Cả 2 đều có đầy đủ tính năng Gold (đổi icon, camera theme, huy hiệu...). Bản mới nhất bố cục gọn hơn, tách Widget Setup riêng.
+          </div>
+        </div>
+
+        <!-- Pane 7: Widget -->
+        <div class="compare-pane" id="cpane7">
+          <div class="compare-cols">
+            <div>
+              <div class="compare-badge old" style="display:block">📦 2.8.0</div>
+              <div class="compare-img-wrap"><img src="/images/wg1.jpeg" loading="lazy" alt="Widget 2.8.0"></div>
+            </div>
+            <div>
+              <div class="compare-badge new" style="display:block">🌐 Mới nhất</div>
+              <div class="compare-img-wrap"><img src="/images/wg2.jpeg" loading="lazy" alt="Widget mới nhất"></div>
+            </div>
+          </div>
+          <div class="compare-note">
+            <div class="compare-verdict">
+              <div class="compare-verdict-item v-old">📦 2.8.0<br>Có viền màu ổn định</div>
+              <div class="compare-verdict-item v-new">🌐 Mới nhất<br>Viền hay bị mất ✗</div>
+            </div>
+            Bản 2.8.0 widget <b>giữ viền màu ổn định</b>. Bản mới nhất cũng có viền nhưng <b>hay bị mất</b> — đây là lỗi chưa được fix.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Cảnh báo chung cho cả 2 phiên bản -->
+    <div class="notice-box" style="margin-bottom:14px"><span style="font-size:1rem;flex-shrink:0">⚠️</span><p><b>Không được xóa Shadowrocket</b> sau khi đã cài Locket Gold! Cần để fix lỗi trong quá trình sử dụng.</p></div>
+
+    <!-- 2 lựa chọn -->
+    <div style="font-size:.75rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Chọn phương án của bạn:</div>
+    <div class="choice-cards">
+      <div class="choice-card${ch==='dns'?' selected':''}" data-choice="dns" onclick="selectChoice('dns')" style="position:relative;padding-top:22px;">
+        <div class="choice-card-check">✓</div>
+        <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),#0891b2);color:#fff;font-family:'Nunito',sans-serif;font-size:.62rem;font-weight:900;padding:3px 10px;border-radius:20px;white-space:nowrap;letter-spacing:.04em;box-shadow:0 2px 8px rgba(6,182,212,.3)">⭐ Khuyên dùng</div>
+        <div class="choice-card-ico">🌐</div>
+        <div class="choice-card-title">Locket mới nhất</div>
+        <div><span class="choice-card-tag blue">Ít bước nhất</span></div>
+      </div>
+      <div class="choice-card${ch==='v280'?' selected':''}" data-choice="v280" onclick="selectChoice('v280')">
+        <div class="choice-card-check">✓</div>
+        <div class="choice-card-ico">📦</div>
+        <div class="choice-card-title">Locket 2.8.0</div>
+        <div><span class="choice-card-tag green">Siêu ổn định</span></div>
+      </div>
+    </div>
+
+    <!-- Chi tiết DNS -->
+    <div class="choice-detail" id="detailDns" style="display:${ch==='dns'?'':'none'}">
+      <div class="choice-detail-title">🌐 Cài DNS cho Locket mới nhất</div>
+      <a class="btn-download" href="${esc(s.download_url||'/dns.mobileconfig')}" download>⬇ Tải file DNS về máy</a>
+      <div style="display:flex;align-items:center;gap:7px;margin-top:18px;margin-bottom:6px;"><span class="video-label" style="background:rgba(124,58,237,.1);color:var(--p1);border-radius:6px;padding:3px 8px;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em">▶ Video hướng dẫn</span></div>
+      <div class="video-wrap" style="margin-top:0"><div class="video-shell"><video src="${esc(s.dns_video_url||'')}" controls playsinline></video></div></div>
+    </div>
+
+    <!-- Chi tiết 2.8.0 -->
+    <div class="choice-detail" id="detailV280" style="display:${ch==='v280'?'':'none'}">
+      <div class="choice-detail-title">📦 Cài Locket 2.8.0</div>
+      <a class="btn-link" href="${esc(s.install_link||'/install')}">📲 Xem tài khoản &amp; cài app</a>
+      <div style="display:flex;align-items:center;gap:7px;margin-top:18px;margin-bottom:6px;"><span class="video-label" style="background:rgba(124,58,237,.1);color:var(--p1);border-radius:6px;padding:3px 8px;font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em">▶ Video hướng dẫn</span></div>
+      <div class="video-wrap" style="margin-top:0"><div class="video-shell"><video src="https://res.cloudinary.com/dqkilohx1/video/upload/v1774110256/locket280_qbkmok.mp4" controls playsinline></video></div></div>
+    </div>`;
+  } else if (s.type === 'video') {
+    if (s.content) inner += `<div class="step-content" style="margin-bottom:14px">${esc(s.content)}</div>`;
+    if (s.image_url) {
+      const ytMatch = s.image_url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|shorts\/|embed\/))([-\w]{11})/);
+      const ytId = ytMatch ? ytMatch[1] : '';
+      if (ytId) inner += `<div class="video-wrap"><div class="video-shell"><iframe src="https://www.youtube-nocookie.com/embed/${ytId}?rel=0&modestbranding=1&controls=1" allowfullscreen allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div>${s.caption ? `<div class="video-caption">${esc(s.caption)}</div>` : ''}</div>`;
+    }
+  }
+  document.getElementById('stepContainer').innerHTML = `<div class="step-card${bgClass}">${inner}</div>`;
+  window.scrollTo(0, 0);
+  const isLast = currentStep === steps.length - 1;
+  const btnPrev = document.getElementById('btnPrev');
+  const btnNext = document.getElementById('btnNext');
+  btnPrev.style.display = currentStep === 0 ? 'none' : '';
+  btnNext.textContent = isLast ? '✓ Hoàn thành' : 'Tiếp →';
+  btnNext.className = 'btn-nav ' + (isLast ? 'btn-complete' : 'btn-next');
+  btnNext.onclick = isLast ? completeGuide : goNext;
+  // Nav hint text
+  const navHint = document.getElementById('navHint');
+  if (navHint) {
+    if (isLast) {
+      navHint.innerHTML = '🛡️&nbsp;<b>Bấm Hoàn thành để kích hoạt bảo hành!</b>';
+      navHint.classList.add('hint-complete');
+    } else {
+      navHint.innerHTML = '<span class="hint-arrow">👇</span>&nbsp;Kéo xuống → <b>bấm Tiếp</b> sang bước kế';
+      navHint.classList.remove('hint-complete');
+    }
+  }
+  // Nếu là choice step và chưa chọn → disable
+  if (s.type === 'choice' && !step3Choice) {
+    btnNext.disabled = true;
+    btnNext.style.opacity = '0.4';
+    btnNext.textContent = 'Chọn một phương án trước →';
+    if (navHint) {
+      navHint.innerHTML = '<span class="hint-arrow">👆</span>&nbsp;Chọn <b>Locket mới nhất</b> hoặc <b>2.8.0</b> ở trên!';
+      navHint.classList.remove('hint-complete');
+    }
+  } else {
+    btnNext.disabled = false;
+    btnNext.style.opacity = '';
+  }
+}
+function copyModule(url) {
+  navigator.clipboard.writeText(url).then(() => {
+    const btn = document.getElementById('btnModule');
+    const txt = document.getElementById('moduleActionText');
+    if (btn) btn.classList.add('copied');
+    if (txt) txt.textContent = '✓ Đã sao chép!';
+    setTimeout(() => {
+      if (btn) btn.classList.remove('copied');
+      if (txt) txt.textContent = 'Sao chép link';
+    }, 2500);
+  }).catch(() => showToast('⚠ Không sao chép được, thử lại'));
+}
+function goNext() { if (currentStep < steps.length - 1) { currentStep++; renderStep(); } }
+function goPrev() { if (currentStep > 0) { currentStep--; renderStep(); } }
+
+function closeConfirm() {
+  document.getElementById('confirmOverlay').classList.remove('show');
+}
+async function completeGuide() {
+  document.getElementById('confirmOverlay').classList.add('show');
+}
+async function doComplete() {
+  closeConfirm();
+  try {
+    await api('/api/guide/complete', { method: 'POST', body: '{}' });
+    stopAll();
+    document.querySelectorAll('.screen,#guideUI').forEach(e=>{e.classList.add('hidden');e.style.display='';});
+    const cs=document.getElementById('completeScreen');
+    cs.classList.remove('hidden');
+    cs.style.display='flex';
+  } catch { showToast('⚠ Lỗi. Thử lại.'); }
+}
+
+// ── COMPLETE SCREEN CHECKLIST ──────────────────────────────
+const cDone={1:false,2:false,3:false};
+function cUpdateProgress(){
+  const n=Object.values(cDone).filter(Boolean).length;
+  document.getElementById('cProgressFill').style.width=(n/3*100)+'%';
+  document.getElementById('cProgressTxt').textContent=n+' / 3 bước';
+  if(n===3) setTimeout(()=>{
+    const ov=document.getElementById('cDoneOverlay');
+    ov.style.display='flex';
+  },400);
+}
+function cTick(s){
+  if(cDone[s]) return; cDone[s]=true;
+  const card=document.getElementById('cCard'+s);
+  const badge=document.getElementById('cBadge'+s);
+  const btn=document.getElementById('cBtn'+s);
+  card.style.border='1.5px solid rgba(16,185,129,.4)';
+  card.style.background='#f0fdf4';
+  badge.textContent='✓';badge.style.background='#10b981';
+  if(btn){btn.style.background='#d1fae5';btn.style.color='#047857';btn.style.border='1.5px solid rgba(16,185,129,.2)';btn.textContent='✓ Đã xong';btn.onclick=null;btn.style.cursor='default';}
+  cUpdateProgress();
+}
+function cGoLocket(){
+  window.open('https://locket.cam/xwuan1','_blank');
+  setTimeout(()=>cTick(2),600);
+}
+function cGoZalo(){
+  window.open('https://zalo.me/g/yowrfu992','_blank');
+  setTimeout(()=>cTick(3),600);
+}
+function startPing() {
+  pingInterval = setInterval(async () => {
+    try {
+      const r = await api('/api/guide/ping', { method: 'POST', body: '{}' });
+      if (r.kicked) { stopAll(); alert('⚠ Phiên của bạn đã bị kết thúc bởi admin.'); window.location.href = '/'; }
+      if (r.expired) { stopAll(); alert('⚠ Mã truy cập đã hết hiệu lực.'); window.location.href = '/'; }
+    } catch { console.warn('Ping failed'); }
+  }, 30000);
+}
+function startTimer() {
+  function update() {
+    if (!expiresAt) return;
+    const rem = expiresAt - Date.now();
+    const chip = document.getElementById('timerChip');
+    if (rem <= 0) { chip.textContent = '⏱ Hết giờ'; chip.className = 'timer-chip crit'; stopAll(); setTimeout(() => { alert('⚠ Hết giờ.'); window.location.href = '/'; }, 500); return; }
+    const h = Math.floor(rem / 3600000), m = Math.floor((rem % 3600000) / 60000), s = Math.floor((rem % 60000) / 1000);
+    chip.textContent = `⏱ ${h ? h + 'h ' : ''}${m}m ${s}s`;
+    chip.className = 'timer-chip' + (rem < 600000 ? ' crit' : rem < 1800000 ? ' warn' : '');
+  }
+  update(); timerInterval = setInterval(update, 1000);
+}
+function stopAll() {
+  clearInterval(pingInterval);
+  clearInterval(timerInterval);
+  sessionStorage.removeItem('xwGuideToken');
+  sessionStorage.removeItem('xwGuideExpires');
+}
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+let toastT;
+function showToast(msg) { const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2500); }
+</script>
+</body>
+</html>
