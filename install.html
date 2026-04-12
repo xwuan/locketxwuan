@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1"/>
+<title>Cài đặt & App Store — Locket Gold Xwuan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#f5f4ff;--card:#ffffff;--border:#e6e0ff;
+  --p1:#7c3aed;--p2:#a855f7;--accent:#06b6d4;
+  --text:#1e1b3a;--muted:#8878b0;--warning:#f59e0b;
+  --green:#10b981;--red:#ef4444;--radius:18px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{overscroll-behavior:none;background:var(--bg);color:var(--text);font-family:'Be Vietnam Pro',sans-serif;
+  font-size:15px;line-height:1.7;font-weight:500;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+.bg-dots{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(168,85,247,.10) 1px,transparent 1px);background-size:26px 26px;}
+.bg-decos{position:fixed;inset:0;z-index:0;pointer-events:none;font-size:1.8rem;opacity:.06;}
+.bg-decos span:nth-child(1){position:absolute;top:6%;left:4%;animation:floatDeco 7s ease-in-out infinite 0s;}
+.bg-decos span:nth-child(2){position:absolute;top:10%;right:5%;animation:floatDeco 7s ease-in-out infinite 2s;}
+.bg-decos span:nth-child(3){position:absolute;bottom:20%;left:6%;animation:floatDeco 7s ease-in-out infinite 4s;}
+.bg-decos span:nth-child(4){position:absolute;bottom:15%;right:8%;animation:floatDeco 7s ease-in-out infinite 1s;}
+@keyframes floatDeco{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+@keyframes slideUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.4);}50%{box-shadow:0 0 0 6px rgba(16,185,129,0);}}
+
+.page{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:0 24px 100px;}
+
+/* HEADER */
+header{text-align:center;padding:48px 0 28px;}
+.site-tag{font-size:.72rem;color:var(--muted);font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px;}
+.page-title{font-family:'Nunito',sans-serif;font-weight:900;font-size:clamp(1.8rem,5vw,2.8rem);
+  background:linear-gradient(135deg,var(--p1),var(--p2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:12px;line-height:1.1;}
+.meta-row{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;}
+.meta-chip{display:inline-flex;align-items:center;gap:6px;background:var(--card);border:1.5px solid var(--border);
+  border-radius:20px;padding:5px 14px;font-size:.75rem;font-weight:700;color:var(--muted);}
+.live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+.live-chip{color:var(--green);}
+
+/* INNER TAB SWITCHER */
+.tab-switcher{display:flex;gap:6px;background:var(--card);border:1.5px solid var(--border);
+  border-radius:50px;padding:5px 6px;width:fit-content;margin:0 auto 32px;
+  box-shadow:0 2px 12px rgba(124,58,237,.06);}
+.tab-btn{display:flex;align-items:center;gap:6px;padding:9px 22px;border-radius:40px;border:none;
+  font-family:'Nunito',sans-serif;font-size:.82rem;font-weight:900;letter-spacing:.02em;
+  cursor:pointer;transition:all .2s;white-space:nowrap;background:transparent;color:var(--muted);}
+.tab-btn.active{background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;box-shadow:0 3px 12px rgba(124,58,237,.3);}
+.tab-btn:not(.active):hover{color:var(--p1);background:rgba(124,58,237,.06);}
+
+.tab-panel{display:none;animation:slideUp .3s ease;}
+.tab-panel.active{display:block;}
+
+/* SECTION */
+.section-block{margin-bottom:44px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+.section-num{font-size:.7rem;color:var(--p1);font-weight:900;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;}
+.section-line{flex:1;height:1px;background:var(--border);}
+.section-title-h{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.25rem;color:var(--p1);margin-bottom:4px;}
+.section-sub{font-size:.78rem;color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px;}
+
+/* NOTICE BOXES */
+.notice{background:rgba(16,185,129,.06);border:1.5px solid rgba(16,185,129,.2);border-left:3px solid var(--green);
+  border-radius:14px;padding:13px 18px;display:flex;align-items:flex-start;gap:12px;margin-bottom:16px;}
+.notice p{font-size:.85rem;color:var(--text);line-height:1.65;}
+.notice b{color:var(--green);font-weight:700;}
+.notice-safari{background:rgba(245,158,11,.06);border:1.5px solid rgba(245,158,11,.2);border-left:3px solid var(--warning);
+  border-radius:14px;padding:12px 18px;display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;}
+.notice-safari p{font-size:.85rem;color:var(--text);line-height:1.65;}
+.notice-safari b{color:var(--warning);font-weight:700;}
+.notice-hint{background:rgba(6,182,212,.05);border:1.5px solid rgba(6,182,212,.18);border-left:3px solid var(--accent);
+  border-radius:14px;padding:12px 18px;display:flex;align-items:flex-start;gap:12px;margin-bottom:16px;}
+.notice-hint p{font-size:.85rem;color:var(--text);line-height:1.65;}
+.notice-hint b{color:var(--accent);font-weight:700;}
+
+/* WARN BOX */
+.warn-box{background:rgba(239,68,68,.04);border:1.5px solid rgba(239,68,68,.2);border-radius:var(--radius);overflow:hidden;margin-bottom:22px;}
+.warn-head{background:rgba(239,68,68,.08);padding:10px 18px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(239,68,68,.15);}
+.warn-head-lbl{font-family:'Nunito',sans-serif;font-weight:900;font-size:.82rem;color:var(--red);letter-spacing:.03em;}
+.warn-body{padding:14px 18px;}
+.warn-intro{font-size:.83rem;color:var(--red);line-height:1.65;margin-bottom:12px;}
+.warn-rule{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(239,68,68,.08);}
+.warn-rule:last-child{border-bottom:none;}
+.slot-pill{font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:900;padding:3px 12px;border-radius:8px;letter-spacing:.04em;white-space:nowrap;flex-shrink:0;}
+.s1{background:rgba(124,58,237,.12);color:var(--p1);border:1px solid rgba(124,58,237,.2);}
+.s2{background:rgba(168,85,247,.12);color:var(--p2);border:1px solid rgba(168,85,247,.2);}
+.s3{background:rgba(6,182,212,.12);color:var(--accent);border:1px solid rgba(6,182,212,.2);}
+.warn-arrow{color:var(--green);font-size:1rem;font-weight:700;}
+.warn-rule-text{font-size:.83rem;color:var(--text);}
+.warn-rule-text b{font-weight:800;color:var(--p1);}
+
+/* ACCOUNT CARDS */
+.acc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.acc-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);
+  padding:22px 18px 18px;display:flex;flex-direction:column;
+  box-shadow:0 2px 16px rgba(124,58,237,.06);animation:slideUp .5s ease both;
+  transition:transform .2s,box-shadow .2s,border-color .2s;}
+.acc-card:nth-child(1){animation-delay:.05s;}
+.acc-card:nth-child(2){animation-delay:.13s;}
+.acc-card:nth-child(3){animation-delay:.21s;}
+.acc-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(124,58,237,.12);border-color:var(--p2);}
+.acc-card.maint{border-color:rgba(245,158,11,.25);background:linear-gradient(145deg,rgba(245,158,11,.04),var(--card));}
+.acc-card.maint:hover{border-color:var(--warning);}
+.card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.card-type{font-size:.7rem;color:var(--muted);font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
+.card-badges{display:flex;align-items:center;gap:6px;}
+.status-tag{font-size:.7rem;font-weight:700;letter-spacing:.06em;padding:3px 10px;border-radius:20px;}
+.st-active{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:var(--green);}
+.st-maint{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);color:var(--warning);}
+.card-slot-badge{font-size:.7rem;color:var(--muted);font-weight:700;
+  background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:3px 10px;}
+.maint-banner{background:rgba(245,158,11,.08);border:1.5px solid rgba(245,158,11,.18);
+  border-radius:10px;padding:9px 12px;display:flex;align-items:flex-start;gap:7px;margin-bottom:12px;}
+.maint-banner p{font-size:.78rem;color:rgba(120,80,0,.8);line-height:1.5;}
+.maint-banner b{color:var(--warning);}
+.acc-email{font-family:'Be Vietnam Pro',sans-serif;font-weight:700;
+  font-size:clamp(.8rem,1.2vw,.9rem);color:var(--p1);
+  margin-bottom:16px;word-break:break-all;letter-spacing:.02em;line-height:1.55;flex-grow:1;}
+.mask-stars{color:var(--border);letter-spacing:-.04em;}
+.btn-row{display:flex;gap:8px;}
+.btn-copy{flex:1;padding:11px 6px;border:none;border-radius:11px;
+  font-family:'Nunito',sans-serif;font-size:.78rem;font-weight:900;letter-spacing:.02em;cursor:pointer;transition:all .18s;}
+.btn-copy:active{transform:scale(.96);}
+.btn-id{background:linear-gradient(135deg,var(--accent),#0891b2);color:#fff;box-shadow:0 3px 0 #0e7490;}
+.btn-id:active{box-shadow:0 0 0;}
+.btn-pass{background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;box-shadow:0 3px 0 #5b20c0;}
+.btn-pass:active{box-shadow:0 0 0;}
+.btn-copy.copied{background:linear-gradient(135deg,var(--green),#059669)!important;box-shadow:none!important;}
+.divider-v{width:1px;background:var(--border);align-self:stretch;flex-shrink:0;}
+.empty-card{background:var(--bg);border:1.5px dashed var(--border);border-radius:var(--radius);
+  padding:36px 20px;text-align:center;font-size:.8rem;color:var(--muted);font-weight:700;letter-spacing:.04em;}
+
+/* IPA CARDS */
+.ipa-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.ipa-card{background:var(--card);border:1.5px solid var(--border);border-radius:var(--radius);
+  overflow:hidden;box-shadow:0 2px 16px rgba(124,58,237,.06);
+  animation:slideUp .5s ease both;transition:transform .22s,box-shadow .22s,border-color .22s;}
+.ipa-card:nth-child(1){animation-delay:.05s;}
+.ipa-card:nth-child(2){animation-delay:.13s;}
+.ipa-card:nth-child(3){animation-delay:.21s;}
+.ipa-card:hover{transform:translateY(-4px);box-shadow:0 10px 32px rgba(124,58,237,.12);border-color:var(--p2);}
+.slot-strip{background:linear-gradient(135deg,rgba(124,58,237,.08),rgba(168,85,247,.06));
+  border-bottom:1.5px solid var(--border);padding:14px 18px;
+  display:flex;justify-content:space-between;align-items:center;}
+.slot-num{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.2rem;color:var(--p1);}
+.slot-lbl{font-size:.68rem;color:var(--muted);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-top:2px;}
+.slot-must{background:var(--bg);border:1px solid var(--border);border-radius:20px;
+  padding:4px 12px;font-size:.7rem;color:var(--muted);font-weight:700;}
+.card-body{padding:18px;}
+.app-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+  font-size:26px;margin-bottom:10px;border:1.5px solid var(--border);}
+.ai-1{background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(168,85,247,.1));}
+.ai-2{background:linear-gradient(135deg,rgba(168,85,247,.15),rgba(6,182,212,.1));}
+.ai-3{background:linear-gradient(135deg,rgba(6,182,212,.15),rgba(124,58,237,.1));}
+.app-name{font-family:'Nunito',sans-serif;font-weight:900;font-size:1.1rem;color:var(--p1);margin-bottom:2px;}
+.app-sub{font-size:.7rem;color:var(--muted);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px;}
+.acc-tag{background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.18);border-radius:9px;
+  padding:8px 11px;display:flex;align-items:flex-start;gap:6px;margin-bottom:7px;}
+.acc-tag p{font-size:.78rem;color:var(--text);line-height:1.55;}
+.acc-tag b{color:var(--green);font-weight:700;}
+.wrong-warn{background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.15);border-radius:9px;
+  padding:7px 11px;display:flex;align-items:flex-start;gap:6px;margin-bottom:12px;}
+.wrong-warn p{font-size:.76rem;color:var(--red);line-height:1.55;}
+.wrong-warn b{font-weight:700;}
+.divider-line{height:1px;background:var(--border);margin:12px 0;}
+.btn-install{display:block;width:100%;padding:14px;border:none;border-radius:12px;
+  text-align:center;text-decoration:none;
+  font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:900;letter-spacing:.02em;
+  cursor:pointer;transition:all .18s;}
+.btn-install:active{transform:translateY(3px);}
+.bi-1{background:linear-gradient(135deg,var(--p1),#6d28d9);color:#fff;box-shadow:0 4px 0 #4c1d95;}
+.bi-1:active{box-shadow:0 1px 0 #4c1d95;}
+.bi-2{background:linear-gradient(135deg,var(--p2),#9333ea);color:#fff;box-shadow:0 4px 0 #6b21a8;}
+.bi-2:active{box-shadow:0 1px 0 #6b21a8;}
+.bi-3{background:linear-gradient(135deg,var(--accent),#0891b2);color:#fff;box-shadow:0 4px 0 #0e7490;}
+.bi-3:active{box-shadow:0 1px 0 #0e7490;}
+.ios-note{font-size:.72rem;color:var(--muted);text-align:center;letter-spacing:.04em;margin-top:7px;font-weight:500;}
+
+/* BOTTOM NAV — floating style */
+.nav-bar{
+  position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:10;
+  display:flex;justify-content:center;
+  width:auto;
+}
+@media(max-width:540px){
+  .nav-bar{bottom:12px;width:calc(100% - 32px);}
+}
+.nav-inner{
+  display:flex;align-items:center;gap:4px;
+  background:rgba(255,255,255,.85);backdrop-filter:blur(16px);
+  border-radius:50px;padding:5px 6px;
+  box-shadow:0 4px 24px rgba(124,58,237,.18),0 1px 0 rgba(255,255,255,.8) inset;
+  border:none;
+}
+.nav-tab{
+  display:flex;align-items:center;gap:6px;padding:10px 22px;border-radius:40px;
+  font-family:'Nunito',sans-serif;font-size:.86rem;font-weight:900;letter-spacing:.02em;
+  text-decoration:none;cursor:pointer;transition:all .2s;white-space:nowrap;border:none;background:transparent;
+}
+@media(max-width:540px){
+  .nav-tab{padding:11px 0;flex:1;justify-content:center;font-size:.82rem;}
+}
+.nav-tab.active{
+  background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;
+  box-shadow:0 3px 12px rgba(124,58,237,.35);
+}
+.nav-tab.inactive{color:var(--muted);}
+.nav-tab.inactive:hover{color:var(--p1);background:rgba(124,58,237,.06);}
+/* Guide tab pulse khi đang trong guide session */
+.nav-tab.guide-active{
+  background:linear-gradient(135deg,var(--p1),var(--p2));color:#fff;
+  box-shadow:0 3px 0 #5b20c0;
+  animation:guideTabPulse 1.8s ease-in-out infinite;
+}
+@keyframes guideTabPulse{
+  0%,100%{box-shadow:0 3px 0 #5b20c0,0 0 0 0 rgba(124,58,237,.45);}
+  55%{box-shadow:0 3px 0 #5b20c0,0 0 0 10px rgba(124,58,237,0);}
+}
+.nav-sep{width:1px;height:20px;background:var(--border);}
+
+/* TOP GUIDE BANNER — chỉ hiện trên mobile khi có guide session */
+.guide-top-bar{
+  display:none;
+  position:fixed;top:0;left:0;right:0;z-index:30;
+  background:linear-gradient(135deg,var(--p1),var(--p2));
+  padding:9px 16px;
+  align-items:center;justify-content:space-between;gap:10px;
+  box-shadow:0 3px 14px rgba(124,58,237,.35);
+  transform:translateY(-100%);transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+.guide-top-bar.visible{transform:translateY(0);}
+.guide-top-bar-text{font-size:.76rem;color:rgba(255,255,255,.92);font-weight:600;line-height:1.4;flex:1;}
+.guide-top-bar-text b{color:#fff;}
+.guide-top-bar a{
+  flex-shrink:0;
+  display:inline-flex;align-items:center;gap:5px;
+  background:#fff;color:var(--p1);text-decoration:none;
+  font-family:'Nunito',sans-serif;font-weight:900;font-size:.78rem;
+  padding:6px 14px;border-radius:20px;
+  box-shadow:0 2px 0 rgba(0,0,0,.12);
+  white-space:nowrap;
+}
+@media(min-width:541px){.guide-top-bar{display:none!important;}}
+
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);
+  background:var(--p1);color:#fff;border-radius:30px;padding:10px 22px;font-size:.82rem;font-weight:700;
+  opacity:0;transition:.3s;pointer-events:none;z-index:50;white-space:nowrap;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+footer{text-align:center;font-size:.7rem;color:var(--muted);padding-top:32px;padding-bottom:90px;font-weight:500;}
+
+@media(max-width:860px){
+  .page{padding:0 16px 100px;}
+  .acc-grid,.ipa-grid{grid-template-columns:1fr 1fr;gap:14px;}
+}
+@media(max-width:540px){
+  header{padding:32px 0 20px;}
+  .page-title{font-size:1.6rem;}
+  .tab-switcher{width:100%;}
+  .tab-btn{flex:1;justify-content:center;padding:9px 10px;font-size:.78rem;}
+  .acc-grid,.ipa-grid{grid-template-columns:1fr;}
+  .section-head{flex-wrap:wrap;gap:6px;}
+  .warn-rule{flex-wrap:wrap;}
+  .notice p,.notice-safari p,.notice-hint p{font-size:.82rem;}
+  .nav-tab{padding:8px 10px;font-size:.74rem;gap:4px;}
+}
+</style>
+</head>
+<body>
+<div class="bg-dots"></div>
+<div class="bg-decos"><span>✨</span><span>💫</span><span>⭐</span><span>🌟</span></div>
+
+<!-- TOP GUIDE BANNER — mobile only, hiện khi có guide session -->
+<div class="guide-top-bar" id="guideTopBar">
+  <div class="guide-top-bar-text">📖 Sao chép xong → <b>bấm Guide</b> để xem tiếp video!</div>
+  <a href="/guide">Guide →</a>
+</div>
+
+<div class="page" id="mainPage">
+  <header>
+    <div class="site-tag">● locketxwuan.vercel.app / install</div>
+    <div class="page-title" id="pageTitle">Shadowrocket</div>
+    <div class="meta-row">
+      <div class="meta-chip">🍎 iOS Only</div>
+      <div class="meta-chip live-chip"><span class="live-dot"></span>Realtime</div>
+      <div class="meta-chip" id="slotCount">Đang tải...</div>
+    </div>
+  </header>
+
+  <!-- INNER TABS -->
+  <div class="tab-switcher">
+    <button class="tab-btn active" id="btn-sr" onclick="switchTab('sr')">🔐 Shadowrocket</button>
+    <button class="tab-btn" id="btn-lk" onclick="switchTab('lk')">📲 Locket</button>
+  </div>
+
+  <!-- ══ TAB SHADOWROCKET ══ -->
+  <div class="tab-panel active" id="panel-sr">
+    <div class="section-block">
+      <div class="section-head"><div class="section-num">Tài khoản App Store</div><div class="section-line"></div></div>
+      <div class="section-title-h">Tài khoản tải Shadowrocket</div>
+      <div class="section-sub">Đăng nhập → Tải app → Đăng xuất ngay</div>
+      <div class="notice">
+        <div style="font-size:1.1rem;flex-shrink:0;margin-top:2px">📌</div>
+        <p><b>Lưu ý:</b> Đây là tài khoản App Store để tải <b>Shadowrocket</b>. Sau khi tải xong — <b>đăng xuất ngay</b> và <b>KHÔNG lưu mật khẩu</b>. Báo lại Xwuan slot nào đã dùng.</p>
+      </div>
+      <div class="acc-grid" id="srContainer">
+        <div style="font-size:.82rem;color:var(--muted);text-align:center;padding:40px;grid-column:1/-1;font-weight:600;">⌛ Đang tải...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TAB LOCKET ══ -->
+  <div class="tab-panel" id="panel-lk">
+
+    <!-- Section 1: Tài khoản -->
+    <div class="section-block">
+      <div class="section-head"><div class="section-num">01 · Tài khoản</div><div class="section-line"></div></div>
+      <div class="section-title-h">Tài khoản App Store tải Locket</div>
+      <div class="section-sub">Đăng nhập → Tải app → Đăng xuất ngay</div>
+      <div class="notice">
+        <div style="font-size:1.1rem;flex-shrink:0;margin-top:2px">📌</div>
+        <p><b>Lưu ý:</b> Dùng tài khoản này để <b>đăng nhập App Store</b> và tải Locket. Sau khi tải xong — <b>đăng xuất ngay</b> và <b>KHÔNG lưu mật khẩu</b>. Báo lại Xwuan slot nào bạn đã dùng.</p>
+      </div>
+      <div class="acc-grid" id="lkContainer">
+        <div style="font-size:.82rem;color:var(--muted);text-align:center;padding:40px;grid-column:1/-1;font-weight:600;">⌛ Đang tải tài khoản...</div>
+      </div>
+    </div>
+
+    <!-- Section 2: Cài đặt IPA -->
+    <div class="section-block">
+      <div class="section-head"><div class="section-num">02 · Cài đặt app</div><div class="section-line"></div></div>
+      <div class="section-title-h">Cài Locket IPA</div>
+      <div class="section-sub">Chọn đúng slot · Safari only</div>
+      <div class="notice-safari">
+        <div style="font-size:1.1rem;flex-shrink:0;margin-top:2px">🌐</div>
+        <p>Trang cài đặt chỉ hoạt động trên <b>Safari / iOS</b>. Nếu đang dùng Chrome — mở bằng <b>Safari</b>.</p>
+      </div>
+      <div class="warn-box">
+        <div class="warn-head"><span>🚨</span><span class="warn-head-lbl">Quan trọng — Tải đúng app theo slot tài khoản</span></div>
+        <div class="warn-body">
+          <div class="warn-intro">Mỗi tài khoản gắn với <b>một app riêng biệt</b>. Dùng sai app → <b>bị văng khỏi tài khoản ngay!</b></div>
+          <div class="warn-rule"><span class="slot-pill s1">Slot 1</span><span class="warn-arrow">→</span><span class="warn-rule-text">Tải <b>Locket Phantom</b></span></div>
+          <div class="warn-rule"><span class="slot-pill s2">Slot 2</span><span class="warn-arrow">→</span><span class="warn-rule-text">Tải <b>Locket Aurora</b></span></div>
+          <div class="warn-rule"><span class="slot-pill s3">Slot 3</span><span class="warn-arrow">→</span><span class="warn-rule-text">Tải <b>Locket Nexus</b></span></div>
+        </div>
+      </div>
+      <div class="notice-hint">
+        <div style="font-size:1.1rem;flex-shrink:0;margin-top:2px">💡</div>
+        <p><b>Chưa biết dùng slot mấy?</b> Xem tài khoản App Store ở section bên trên — slot nào bạn vừa đăng nhập thì tải app slot đó.</p>
+      </div>
+      <div class="ipa-grid">
+        <div class="ipa-card">
+          <div class="slot-strip"><div><div class="slot-num">Slot 01</div><div class="slot-lbl">Tài khoản slot 1</div></div><div class="slot-must">App của bạn</div></div>
+          <div class="card-body">
+            <div class="app-icon ai-1">👻</div>
+            <div class="app-name">Locket Phantom</div>
+            <div class="app-sub">Phiên bản slot 1</div>
+            <div class="acc-tag"><span>🔑</span><p><b>Chỉ dùng được</b> với tài khoản slot 1</p></div>
+            <div class="wrong-warn"><span>⛔</span><p>Dùng tài khoản slot 2, 3 sẽ <b>bị văng</b></p></div>
+            <div class="divider-line"></div>
+            <a class="btn-install bi-1" href="itms-services://?action=download-manifest&url=https%3A%2F%2Fraw.githubusercontent.com%2FXwuan19%2FLocket-IPA%2Frefs%2Fheads%2Fmain%2Flocket1.plist">↓ Cài đặt — Slot 1</a>
+            <div class="ios-note">* Chỉ hoạt động trên Safari iOS</div>
+          </div>
+        </div>
+        <div class="ipa-card">
+          <div class="slot-strip"><div><div class="slot-num">Slot 02</div><div class="slot-lbl">Tài khoản slot 2</div></div><div class="slot-must">App của bạn</div></div>
+          <div class="card-body">
+            <div class="app-icon ai-2">🌸</div>
+            <div class="app-name">Locket Aurora</div>
+            <div class="app-sub">Phiên bản slot 2</div>
+            <div class="acc-tag"><span>🔑</span><p><b>Chỉ dùng được</b> với tài khoản slot 2</p></div>
+            <div class="wrong-warn"><span>⛔</span><p>Dùng tài khoản slot 1, 3 sẽ <b>bị văng</b></p></div>
+            <div class="divider-line"></div>
+            <a class="btn-install bi-2" href="itms-services://?action=download-manifest&url=https%3A%2F%2Fraw.githubusercontent.com%2FXwuan19%2FLocket-IPA%2Frefs%2Fheads%2Fmain%2Flocket2.plist">↓ Cài đặt — Slot 2</a>
+            <div class="ios-note">* Chỉ hoạt động trên Safari iOS</div>
+          </div>
+        </div>
+        <div class="ipa-card">
+          <div class="slot-strip"><div><div class="slot-num">Slot 03</div><div class="slot-lbl">Tài khoản slot 3</div></div><div class="slot-must">App của bạn</div></div>
+          <div class="card-body">
+            <div class="app-icon ai-3">⚡</div>
+            <div class="app-name">Locket Nexus</div>
+            <div class="app-sub">Phiên bản slot 3</div>
+            <div class="acc-tag"><span>🔑</span><p><b>Chỉ dùng được</b> với tài khoản slot 3</p></div>
+            <div class="wrong-warn"><span>⛔</span><p>Dùng tài khoản slot 1, 2 sẽ <b>bị văng</b></p></div>
+            <div class="divider-line"></div>
+            <a class="btn-install bi-3" href="itms-services://?action=download-manifest&url=https%3A%2F%2Fraw.githubusercontent.com%2FXwuan19%2FLocket-IPA%2Frefs%2Fheads%2Fmain%2Flocket3.plist">↓ Cài đặt — Slot 3</a>
+            <div class="ios-note">* Chỉ hoạt động trên Safari iOS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end panel-lk -->
+
+  <footer>© 2025 Locket Gold Xwuan · Uy tín tạo niềm tin 💜</footer>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- NAV BAR -->
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <a class="nav-tab active" href="/install">📲 Install</a>
+    <div class="nav-sep"></div>
+    <a class="nav-tab inactive" href="/guide" id="navGuideTab">📖 Guide</a>
+  </div>
+</nav>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+const FC={apiKey:"AIzaSyB3FSIkvSXob6F7MXrfOpw_hN6wHKIbu38",authDomain:"xwuan-access-e9d5e.firebaseapp.com",databaseURL:"https://xwuan-access-e9d5e-default-rtdb.firebaseio.com",projectId:"xwuan-access-e9d5e",storageBucket:"xwuan-access-e9d5e.firebasestorage.app",messagingSenderId:"941977010861",appId:"1:941977010861:web:8edc6af5dddccf4097fc24"};
+const app=initializeApp(FC),db=getDatabase(app);
+
+function maskEmail(e){const[l,d]=e.split('@');if(!l||!d)return e;return`${l.slice(0,4)}<span class="mask-stars">${'*'.repeat(Math.max(3,l.length-4))}</span>@${d}`;}
+
+function buildCard(slot,data,label){
+  const isMaint=data.status==='maintenance';
+  const card=document.createElement('div');card.className='acc-card'+(isMaint?' maint':'');
+  const statusTag=isMaint?`<span class="status-tag st-maint">⚠ Bảo trì</span>`:`<span class="status-tag st-active">● Active</span>`;
+  const maintBanner=isMaint?`<div class="maint-banner"><span>🔧</span><p><b>Đang bảo trì</b> — Vui lòng chờ Xwuan cập nhật.</p></div>`:'';
+  const emailStyle=isMaint?'opacity:.4;filter:blur(3px);user-select:none;pointer-events:none;':'';
+  const btnStyle=isMaint?'opacity:.35;pointer-events:none;':'';
+  const ev=isMaint?'':data.email.replace(/'/g,"\\'");
+  const pv=isMaint?'':(data.password||'').replace(/'/g,"\\'");
+  card.innerHTML=`
+    <div class="card-top"><div class="card-type">${label}</div><div class="card-badges">${statusTag}<div class="card-slot-badge">Slot ${slot}</div></div></div>
+    ${maintBanner}
+    <div class="acc-email" style="${emailStyle}">${isMaint?'••••••••••@icloud.com':maskEmail(data.email)}</div>
+    <div class="btn-row" style="${btnStyle}">
+      <button class="btn-copy btn-id" onclick="copyText('${ev}',this,'✓ ID đã sao chép!')">⧉ Sao chép ID</button>
+      <div class="divider-v"></div>
+      <button class="btn-copy btn-pass" onclick="copyText('${pv}',this,'✓ Pass đã sao chép!')">⧉ Sao chép Pass</button>
+    </div>`;
+  return card;
+}
+
+function renderSlots(containerId,data,label){
+  const cont=document.getElementById(containerId);cont.innerHTML='';let active=0;
+  for(let i=1;i<=3;i++){
+    const s=data[`slot${i}`];
+    if(s?.email){cont.appendChild(buildCard(i,s,label));if(s.status!=='maintenance')active++;}
+    else{const e=document.createElement('div');e.className='empty-card';e.style.animationDelay=`${(i-1)*.08}s`;e.innerHTML=`<div style="font-size:1.4rem;margin-bottom:8px">🔒</div>Slot ${i}<br>Chưa có tài khoản`;cont.appendChild(e);}
+  }
+  return active;
+}
+
+let srActive=0,lkActive=0,currentTab=new URLSearchParams(location.search).get('tab')||sessionStorage.getItem('installTab')||'sr';
+
+onValue(ref(db,'shadowrocket'),(snap)=>{
+  srActive=renderSlots('srContainer',snap.val()||{},'App Store Account');
+  if(currentTab==='sr')document.getElementById('slotCount').textContent=`${srActive} slot active`;
+});
+onValue(ref(db,'locket_store'),(snap)=>{
+  lkActive=renderSlots('lkContainer',snap.val()||{},'App Store Account');
+  if(currentTab==='lk')document.getElementById('slotCount').textContent=`${lkActive} slot active`;
+});
+
+window.switchTab=function(name){
+  currentTab=name;
+  sessionStorage.setItem('installTab',name);
+  // panels
+  document.getElementById('panel-sr').classList.toggle('active',name==='sr');
+  document.getElementById('panel-lk').classList.toggle('active',name==='lk');
+  // inner buttons
+  document.getElementById('btn-sr').classList.toggle('active',name==='sr');
+  document.getElementById('btn-lk').classList.toggle('active',name==='lk');
+  // nav buttons — static links, không cần update
+  // header
+  document.getElementById('pageTitle').textContent=name==='sr'?'Shadowrocket':'Cài đặt Locket';
+  document.getElementById('slotCount').textContent=`${name==='sr'?srActive:lkActive} slot active`;
+};
+
+// Restore tab
+if(currentTab==='lk')switchTab('lk');
+</script>
+
+<script>
+function copyText(text,btn,msg){
+  if(!text){showToast('⚠ Không có dữ liệu!');return;}
+  const orig=btn.innerHTML;
+  navigator.clipboard.writeText(text)
+    .then(()=>{btn.innerHTML='✓ Đã sao chép';btn.classList.add('copied');showToast(msg);setTimeout(()=>{btn.innerHTML=orig;btn.classList.remove('copied');},2000);})
+    .catch(()=>{const ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showToast(msg);});
+}
+let toastT;
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2200);}
+
+// Pulse Guide tab + show top bar nếu đang trong guide session
+(function(){
+  const hasGuide = sessionStorage.getItem('xwGuideToken');
+  if(hasGuide){
+    const guideTab = document.getElementById('navGuideTab');
+    if(guideTab){ guideTab.classList.remove('inactive'); guideTab.classList.add('guide-active'); }
+    // Top banner chỉ mobile
+    if(window.innerWidth <= 540){
+      const topBar = document.getElementById('guideTopBar');
+      const page = document.getElementById('mainPage');
+      if(topBar){ topBar.style.display='flex'; setTimeout(()=>topBar.classList.add('visible'),100); }
+      if(page){ page.style.paddingTop='46px'; }
+    }
+  }
+})();
+</script>
+</body>
+</html>
