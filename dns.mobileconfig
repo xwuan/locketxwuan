@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>DNSSettings</key>
+            <dict>
+                <key>DNSProtocol</key>
+                <string>HTTPS</string>
+                <key>ServerURL</key>
+                <string>https://my.ublockdns.com/h4nx3g39</string>
+            </dict>
+            <key>PayloadDisplayName</key>
+            <string>Locket_Xwuan 💫</string>
+            <key>PayloadIdentifier</key>
+            <string>com.apple.dnsSettings.managed.locket</string>
+            <key>PayloadType</key>
+            <string>com.apple.dnsSettings.managed</string>
+            <key>PayloadUUID</key>
+            <string>11111111-2222-3333-4444-555555555555</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+        </dict>
+    </array>
+    <key>PayloadDescription</key>
+    <string>✨ Duy trì Locket Gold ổn định💛&#xA;🚀 Tối ưu hoá mạng&#xA;🚫 Chặn quảng cáo</string>
+    <key>PayloadDisplayName</key>
+    <string>Locket_Xwuan 💫</string>
+    <key>PayloadIdentifier</key>
+    <string>com.profile.system.locket</string>
+    <key>PayloadOrganization</key>
+    <string>Xwuan</string>
+    <key>PayloadRemovalDisallowed</key>
+    <false/>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>
